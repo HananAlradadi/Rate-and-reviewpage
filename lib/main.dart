@@ -63,7 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }
-
+  TextEditingController textarea = TextEditingController();
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -104,11 +104,25 @@ class _MyHomePageState extends State<MyHomePage> {
               SizedBox(
                 height: 20,
               ),
-              Text(
-                'Selected Value: $dropdownValue',
-                style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
-              )
-            ],
+
+            TextField(
+          controller: textarea,
+    keyboardType: TextInputType.multiline,
+    maxLines: 4,
+    decoration: InputDecoration(
+    hintText: "Enter review",
+    focusedBorder: OutlineInputBorder(
+    borderSide: BorderSide(width: 1, color: Colors.redAccent)
+    ) )),
+
+              ElevatedButton(
+                  onPressed: (){
+                    print(textarea.text);
+                  },
+                  child: Text("add review")
+              ),
+
+        ],
           ),
         ),
       );
